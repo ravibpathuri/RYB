@@ -19,7 +19,7 @@ namespace RYB.api.Controllers
         [Route("all")]
         public async Task<IActionResult> GetUsers()
         {
-            return Ok(await _mediatR.Send(new MediatR.Queries.GetUsers(), default(CancellationToken)));
+            return Ok(await _mediatR.Send(new MediatR.Queries.GetUsers()));
         }
 
         [HttpGet]
