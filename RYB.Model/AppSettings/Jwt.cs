@@ -2,7 +2,7 @@
 
 public class Jwt
 {
-    public string Secret { get; set; }
+    public string Secret { get; set; } = default!;
 
     // refresh token time to live (in days), inactive tokens are
     // automatically deleted from the database after this time

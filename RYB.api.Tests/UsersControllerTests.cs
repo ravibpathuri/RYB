@@ -42,14 +42,20 @@ namespace RYB.api.Tests
             Task<IActionResult> actionResult = usersController.GetUsers();
             actionResult.Wait();
 
-            OkObjectResult okObjectResult = actionResult.Result as OkObjectResult;
+
+
+            OkObjectResult? okObjectResult = actionResult.Result as OkObjectResult;
             Assert.NotNull(okObjectResult);
 
-            IEnumerable<UserProfile> actualData = okObjectResult.Value as IEnumerable<UserProfile>;
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            IEnumerable<UserProfile>? actualData = okObjectResult.Value as IEnumerable<UserProfile>;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             Assert.NotNull(actualData);
 
             // assert
+#pragma warning disable CS8604 // Possible null reference argument.
             Assert.AreEqual(expectedData.First().Email, actualData.First().Email);
+#pragma warning restore CS8604 // Possible null reference argument.
 
         }
     }
