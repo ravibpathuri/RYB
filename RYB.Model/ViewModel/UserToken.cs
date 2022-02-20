@@ -5,14 +5,14 @@ namespace RYB.Model.ViewModel;
 public class UserToken
 {
     public int Id { get; set; }
-    public string FirstName { get; set; } = default!;
-    public string LastName { get; set; } = default!;
-    public string Username { get; set; } = default!;
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Username { get; set; }
 
     [JsonIgnore]
-    public string PasswordHash { get; set; } = default!;
+    public string PasswordHash { get; set; }
 
     [JsonIgnore]
-    public List<RefreshToken> RefreshTokens { get; set; } = default!;
+    public List<RefreshToken> RefreshTokens { get; set; }
 }
 

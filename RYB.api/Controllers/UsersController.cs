@@ -4,6 +4,7 @@ using RYB.Model.ViewModel;
 
 namespace RYB.api.Controllers
 {
+    [RYBAuthorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
