@@ -1,6 +1,6 @@
 ﻿namespace RYB.Model.ViewModel
 {
-    public class User
+    public class UserProfile
     {
         public string? Name { get; set; }
         public string? Email { get; set; }

@@ -5,7 +5,7 @@ using RYB.Model.ViewModel;
 
 namespace RYB.MediatR.Commands
 {
-    public class GetUserByEmailHandler : IRequestHandler<GetUserByEmail, IEnumerable<User>>
+    public class GetUserByEmailHandler : IRequestHandler<GetUserByEmail, IEnumerable<UserProfile>>
     {
         private readonly IUserRepo _userRepo;
 
@@ -14,7 +14,7 @@ namespace RYB.MediatR.Commands
             _userRepo = userRepo;
         }
 
-        public async Task<IEnumerable<User>> Handle(GetUserByEmail request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<UserProfile>> Handle(GetUserByEmail request, CancellationToken cancellationToken)
         {
             return await _userRepo.GetUserByEmail(request.userEmail);
         }
