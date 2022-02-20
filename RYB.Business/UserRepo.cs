@@ -13,14 +13,14 @@ namespace RYB.Business
             _db = db;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<UserProfile>> GetUsers()
         {
             string Sql = "SELECT * FROM [UserProfile]";
 
             // this will make db call
             IEnumerable<UserProfileDto> userProfileDtos = await _db.LoadData<UserProfileDto, dynamic>(Sql, new { });
 
-            return userProfileDtos.Select(x => new User
+            return userProfileDtos.Select(x => new UserProfile
             {
                 Email = x.Email,
                 UserId = x.GUID,
@@ -32,14 +32,14 @@ namespace RYB.Business
             });
         }
 
-        public async Task<IEnumerable<User>> GetUserByEmail(string userEmail)
+        public async Task<IEnumerable<UserProfile>> GetUserByEmail(string userEmail)
         {
             string storedProcedure = "GET_USER_BY_EMAIL";
 
             // this will make db call
             IEnumerable<UserProfileDto> userProfileDtos = await _db.LoadData<UserProfileDto, dynamic>(storedProcedure, new { UserEmail = userEmail }, System.Data.CommandType.StoredProcedure);
 
-            return userProfileDtos.Select(x => new User
+            return userProfileDtos.Select(x => new UserProfile
             {
                 Email = x.Email,
                 UserId = x.GUID,

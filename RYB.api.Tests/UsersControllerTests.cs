@@ -1,10 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using RYB.api.Controllers;
 using RYB.Model.ViewModel;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,11 +15,13 @@ namespace RYB.api.Tests
     {
         private UsersController usersController;
         private Mock<IMediator> mediatRMock;
+        private Mock<ILogger<UsersController>> loggerMock;
 
         public UsersControllerTests()
         {
             mediatRMock = new Mock<IMediator>();
-            usersController = new UsersController(mediatRMock.Object);
+            loggerMock = new Mock<ILogger<UsersController>>();
+            usersController = new UsersController(mediatRMock.Object, loggerMock.Object);
         }
 
         [SetUp]
@@ -31,8 +33,8 @@ namespace RYB.api.Tests
         public void GetUsers_should_return_Ok_result()
         {
             // arrange
-            IEnumerable<User> expectedData = new List<User> {
-            new User {Email ="test@email.com"}
+            IEnumerable<UserProfile> expectedData = new List<UserProfile> {
+            new UserProfile {Email ="test@email.com"}
             };
             mediatRMock.Setup(x => x.Send(It.IsAny<MediatR.Queries.GetUsers>(), default(System.Threading.CancellationToken))).ReturnsAsync(expectedData);
 
@@ -43,7 +45,7 @@ namespace RYB.api.Tests
             OkObjectResult okObjectResult = actionResult.Result as OkObjectResult;
             Assert.NotNull(okObjectResult);
 
-            IEnumerable<User> actualData = okObjectResult.Value as IEnumerable<User>;
+            IEnumerable<UserProfile> actualData = okObjectResult.Value as IEnumerable<UserProfile>;
             Assert.NotNull(actualData);
 
             // assert

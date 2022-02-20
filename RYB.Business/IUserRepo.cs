@@ -4,7 +4,7 @@ namespace RYB.Business
 {
     public interface IUserRepo
     {
-        Task<IEnumerable<User>> GetUsers();
-        Task<IEnumerable<User>> GetUserByEmail(string userEmail);
+        Task<IEnumerable<UserProfile>> GetUsers();
+        Task<IEnumerable<UserProfile>> GetUserByEmail(string userEmail);
     }
 }
