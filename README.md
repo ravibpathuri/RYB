@@ -15,6 +15,6 @@
 	* 💞️ I’m using Command query responsibility segregation (CQRS) design pattern, JWT based authention, data access with dapper, NUnit Tests in this source code.
 	* 💞️ Above status badges shows status of source code analyzed on build during CI.
 	* 🌱 my blog https://msdotnettips.wordpress.com/
-	* 📫 you can reach me @ [ravibpathuri@gmail.com](mailto:ravibpathuri@gmail.com "ravibpathuri@gmail.com")
+	* 📫 you can reach me at ravibpathuri@gmail.com
 	
 </p>
