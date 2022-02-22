@@ -23,14 +23,14 @@ namespace RYB.api.Controllers
         public async Task<IActionResult> GetUsers()
         {
             _logger.LogInformation("Test message");
-            return Ok(await _mediatR.Send(new MediatR.Queries.GetUsers()));
+            return Ok(await _mediatR.Send(new MediatR.Requests.GetUsersQuery()));
         }
 
         [HttpGet]
         [Route("{userEmail}")]
         public async Task<IActionResult> GetUser(string userEmail)
         {
-            IEnumerable<UserProfile> users = await _mediatR.Send(new MediatR.Queries.GetUserByEmail(userEmail), default(CancellationToken));
+            IEnumerable<UserProfile> users = await _mediatR.Send(new MediatR.Requests.GetUserByEmailQuery(userEmail), default(CancellationToken));
             if (users.Any())
                 return Ok(users);
             else

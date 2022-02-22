@@ -36,7 +36,7 @@ namespace RYB.api.Tests
             IEnumerable<UserProfile> expectedData = new List<UserProfile> {
             new UserProfile {Email ="test@email.com"}
             };
-            mediatRMock.Setup(x => x.Send(It.IsAny<MediatR.Queries.GetUsers>(), default(System.Threading.CancellationToken))).ReturnsAsync(expectedData);
+            mediatRMock.Setup(x => x.Send(It.IsAny<MediatR.Requests.GetUsersQuery>(), default(System.Threading.CancellationToken))).ReturnsAsync(expectedData);
 
             // act
             Task<IActionResult> actionResult = usersController.GetUsers();
