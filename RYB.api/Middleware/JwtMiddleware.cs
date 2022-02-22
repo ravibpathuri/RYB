@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Options;
 using RYB.Cryptography;
-using RYB.MediatR.Queries;
+using RYB.MediatR.Requests;
 using RYB.Model.AppSettings;
 
 namespace RYB.api.Middleware;
@@ -23,7 +23,7 @@ public class JwtMiddleware
         if (!string.IsNullOrEmpty(userId))
         {
             // attach user to context on successful jwt validation
-            context.Items["User"] = await mediatR.Send(new GetUserByToken(userId));
+            context.Items["User"] = await mediatR.Send(new GetUserByTokenQuery(userId));
         }
 
         await _next(context);

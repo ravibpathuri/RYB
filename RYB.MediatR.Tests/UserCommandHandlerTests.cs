@@ -1,7 +1,9 @@
+using MediatR;
 using Moq;
 using NUnit.Framework;
 using RYB.Business;
-using RYB.MediatR.Commands;
+using RYB.Cryptography;
+using RYB.MediatR.Handlers;
 using RYB.Model.ViewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,12 +12,16 @@ namespace RYB.MediatR.Tests;
 
 public class UserCommandHandlerTests
 {
-    GetUserHandler getUserHandler;
+    UserHandler getUserHandler;
     Mock<IUserRepo> userRepoMock;
+    Mock<IJwtUtils> jwtUtilsMock;
+    Mock<IMediator> _mediatRMock;
     public UserCommandHandlerTests()
     {
         userRepoMock = new Mock<IUserRepo>();
-        getUserHandler = new GetUserHandler(userRepoMock.Object);
+        jwtUtilsMock = new Mock<IJwtUtils>();
+        _mediatRMock = new Mock<IMediator>();
+        getUserHandler = new UserHandler(userRepoMock.Object, jwtUtilsMock.Object, _mediatRMock.Object);
 
     }
     [SetUp]
@@ -31,6 +37,6 @@ public class UserCommandHandlerTests
         userRepoMock.Setup(x => x.GetUsers()).ReturnsAsync(users);
 
         // act
-        Task<IEnumerable<UserProfile>> usersData = getUserHandler.Handle(new Queries.GetUsers(), default(System.Threading.CancellationToken));
+        Task<IEnumerable<UserProfile>> usersData = getUserHandler.Handle(new Requests.GetUsersQuery(), default(System.Threading.CancellationToken));
     }
 }
