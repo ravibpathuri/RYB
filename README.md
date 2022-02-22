@@ -9,12 +9,12 @@
 
 <p align="center">
 	 
-	- 👋 Hi, I’m @ravibpathuri
-	- 👀 I’m interested in programming
-	- 🌱 I’m currently exploring .net core 6.0 to build cloud native apps
-	- 💞️ I’m using Command query responsibility segregation (CQRS) design pattern, JWT based authention, data access with dapper, NUnit Tests in this source code.
-	- 💞️ Above status badges shows status of source code analyzed on build during CI.
-	- 🌱 my blog https://msdotnettips.wordpress.com/
-	- 📫 you can reach me @ ravibpathuri@gmail.com
+	* 👋 Hi, I’m @ravibpathuri
+	* 👀 I’m interested in programming
+	* 🌱 I’m currently exploring .net core 6.0 to build cloud native apps
+	* 💞️ I’m using Command query responsibility segregation (CQRS) design pattern, JWT based authention, data access with dapper, NUnit Tests in this source code.
+	* 💞️ Above status badges shows status of source code analyzed on build during CI.
+	* 🌱 my blog https://msdotnettips.wordpress.com/
+	* 📫 you can reach me at ravibpathuri@gmail.com
 	
 </p>
